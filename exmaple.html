@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="template"></div>
+    <script src="./xhr.js"></script>
+    <script>
+      const template = document.getElementById("template");
+      http.loadDocument({
+        method: "GET",
+        url: "./profile/profile.html",
+        scripts: [
+          { src: "test.js", type: "module" },
+          { type: "text/javascript", src: "test.mjs" },
+        ],
+        parentElement: template,
+        errorDocument: {
+          404: "error/404.html",
+        },
+      });
+    </script>
+  </body>
+</html>
